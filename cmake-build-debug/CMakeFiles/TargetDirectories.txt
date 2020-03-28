@@ -1,0 +1,3 @@
+C:/Projects/semana0-covid19-Piero16301/cmake-build-debug/CMakeFiles/Covid19.dir
+C:/Projects/semana0-covid19-Piero16301/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Projects/semana0-covid19-Piero16301/cmake-build-debug/CMakeFiles/rebuild_cache.dir
