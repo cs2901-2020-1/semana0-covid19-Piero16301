@@ -25,30 +25,33 @@ string leerGenoma(const string& rutaArchivo, fstream &objArchivo, ios_base::open
 
 int main() {
     fstream G1, G2;
-    string Genoma1 = leerGenoma("../AY274119.txt", G1, ios::in);
-    string Genoma2 = leerGenoma("../AY278488.2.txt", G2, ios::in);
+    string Genoma1 = leerGenoma("../MN908947.txt", G1, ios::in);
+    string Genoma2 = leerGenoma("../MN988669.txt", G2, ios::in);
 
     cout << "Genoma 1: " << Genoma1.length() << " bases nitrogenadas." << endl;
     cout << "Genoma 2: " << Genoma2.length() << " bases nitrogenadas." << endl;
 
-    int caracteresComunes = 0, cadenaCorta;
-    if (Genoma1 == Genoma2) {
-        cout << "Los genomas son iguales.";
-        return 0;
-    } else {
-        if (Genoma1 > Genoma2) {
-            cadenaCorta = Genoma2.size();
-        } else {
-            cadenaCorta = Genoma1.size();
-        }
-        for(int i = 0; i != cadenaCorta; ++i){
-            if (Genoma1[i] == Genoma2[i]) {
-                ++caracteresComunes;
+    double basesIguales = 0;
+
+    const char *pointerG1 = Genoma1.c_str();
+    const char *pointerG2 = Genoma2.c_str();
+
+    for (int i=0; *pointerG1!='\0'; i++) {
+        for (int j=0; *pointerG2!='\0'; j++) {
+            if (*pointerG1 == *pointerG2) {
+                basesIguales++;
+            } else {
+                break;
             }
+            (*pointerG2++);
         }
+        *pointerG1++;
     }
 
-    cout << (caracteresComunes * 100)/Genoma1.length() << "% del Genoma 1 es identico en el Genoma 2.";
+    double igualesG1 = (basesIguales / Genoma1.length()) * 100.0;
+    double igualesG2 = (basesIguales / Genoma2.length()) * 100.0;
+
+    cout << "El " << igualesG1 << "% del Genoma 1 es igual al " << igualesG2 << "% del Genoma 2.";
     
     return 0;
 }
